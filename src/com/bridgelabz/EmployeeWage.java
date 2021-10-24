@@ -13,22 +13,32 @@ public class EmployeeWage {
         int WAGE_PER_HOUR = 20;
         int FULL_DAY_HOUR = 8;
         int Daily_Wage = 0;
+        int Working_Day = 20;
+        int Monthly_Wage = 0;
+
         double empCheck = Math.floor(Math.random() * 10) % 2;
         switch ((int) empCheck) {
             case 1 :
             System.out.println("Employee is present");
             Daily_Wage = WAGE_PER_HOUR * FULL_DAY_HOUR;
+            Monthly_Wage = Working_Day * Daily_Wage;
             System.out.println("Daily Wage of Employee is : " + Daily_Wage);
+            System.out.println("Monthly Wage of Employee is : " + Monthly_Wage);
             break;
+
             case 2 :
             System.out.println("Employee is present");
             Daily_Wage = WAGE_PER_HOUR * FULL_DAY_HOUR;
+            Monthly_Wage = Working_Day * Daily_Wage;
             System.out.println("Daily Wage of Employee is : " + Daily_Wage);
+            System.out.println("Monthly Wage of Employee is : " + Monthly_Wage);
             break;
 
         }
         System.out.println("Employee is absent");
         Daily_Wage = Daily_Wage;
+        Monthly_Wage = Monthly_Wage;
         System.out.println("Daily Wage of Employee is : " + Daily_Wage);
+        System.out.println("Monthly Wage of Employee is : " + Monthly_Wage);
     }
 }
