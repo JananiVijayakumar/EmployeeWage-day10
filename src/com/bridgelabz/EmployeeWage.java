@@ -12,22 +12,23 @@ public class EmployeeWage {
         int IS_PART_TIME = 0;
         int WAGE_PER_HOUR = 20;
         int FULL_DAY_HOUR = 8;
-        int PART_DAY_HOUR = 8;
         int Daily_Wage = 0;
         double empCheck = Math.floor(Math.random() * 10) % 2;
-        if (empCheck == IS_FULL_TIME) {
+        switch ((int) empCheck) {
+            case 1 :
             System.out.println("Employee is present");
             Daily_Wage = WAGE_PER_HOUR * FULL_DAY_HOUR;
-            System.out.println("Daily Wage of Full-Time Employee is : " + Daily_Wage);
-        }
-        else if (empCheck == IS_PART_TIME) {
+            System.out.println("Daily Wage of Employee is : " + Daily_Wage);
+            break;
+            case 2 :
             System.out.println("Employee is present");
             Daily_Wage = WAGE_PER_HOUR * FULL_DAY_HOUR;
-            System.out.println("Daily Wage of Part-Time Employee is : " + Daily_Wage);
+            System.out.println("Daily Wage of Employee is : " + Daily_Wage);
+            break;
+
         }
-        else {
-            System.out.println("Employee is absent");
-            Daily_Wage = Daily_Wage;
-        }
+        System.out.println("Employee is absent");
+        Daily_Wage = Daily_Wage;
+        System.out.println("Daily Wage of Employee is : " + Daily_Wage);
     }
 }
