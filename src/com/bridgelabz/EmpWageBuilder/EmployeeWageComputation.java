@@ -1,6 +1,6 @@
-package com.bridgelabz;
+package com.bridgelabz.EmpWageBuilder;
 
-public class EmployeeWageComputation {
+public class EmployeeWageComputation implements EmpWageBuilder {
         // class constants
         public static final int PART_TIME = 1;
         public static final int FULL_TIME = 2;
@@ -15,7 +15,7 @@ public class EmployeeWageComputation {
             index = 0;
         }
 
-        void addCompany(String companyName, int wagePerHour, int workingDays, int workingHours)
+        public void addCompany(String companyName, int wagePerHour, int workingDays, int workingHours)
         {
             companies[index++] = new CompanyEmpWage(companyName, wagePerHour, workingDays, workingHours);
         }
@@ -38,7 +38,7 @@ public class EmployeeWageComputation {
             }
         }
 
-        void calculateTotalWage()
+        public void calculateTotalWage()
         {
             for (CompanyEmpWage company : companies)
             {
@@ -69,7 +69,7 @@ public class EmployeeWageComputation {
 
         public static void main(String args[])
         {
-            com.bridgelabz.EmployeeWageComputation employeeWageComputation = new com.bridgelabz.EmployeeWageComputation(3);
+            EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation(3);
             employeeWageComputation.addCompany("TCS", 20, 17, 8);
             employeeWageComputation.addCompany("INFOSYS", 20, 13, 8);
             employeeWageComputation.addCompany("BTS", 20, 19, 8);
