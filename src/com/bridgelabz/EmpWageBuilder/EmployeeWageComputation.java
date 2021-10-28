@@ -1,23 +1,23 @@
 package com.bridgelabz.EmpWageBuilder;
 
+import java.util.ArrayList;
+
 public class EmployeeWageComputation implements EmpWageBuilder {
         // class constants
         public static final int PART_TIME = 1;
         public static final int FULL_TIME = 2;
         // instance variables
-        int NoOfCompanies, index;
-        CompanyEmpWage[] companies;
+        ArrayList<CompanyEmpWage>companies;
 
         public EmployeeWageComputation(int noOfCompanies)
         {
-            this.NoOfCompanies = noOfCompanies;
-            companies = new CompanyEmpWage[noOfCompanies];
-            index = 0;
+            companies = new ArrayList<>();
         }
 
         public void addCompany(String companyName, int wagePerHour, int workingDays, int workingHours)
         {
-            companies[index++] = new CompanyEmpWage(companyName, wagePerHour, workingDays, workingHours);
+            CompanyEmpWage company = new CompanyEmpWage(companyName, wagePerHour, workingDays, workingHours);
+            companies.add(company);
         }
 
         int generateEmployeeType()
