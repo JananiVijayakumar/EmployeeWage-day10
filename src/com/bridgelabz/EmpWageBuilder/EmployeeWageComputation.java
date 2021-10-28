@@ -1,6 +1,7 @@
 package com.bridgelabz.EmpWageBuilder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class EmployeeWageComputation implements EmpWageBuilder {
         // class constants
@@ -8,16 +9,19 @@ public class EmployeeWageComputation implements EmpWageBuilder {
         public static final int FULL_TIME = 2;
         // instance variables
         ArrayList<CompanyEmpWage>companies;
+        HashMap<String, Integer> TotalEmpWage;
 
-        public EmployeeWageComputation(int noOfCompanies)
+        public EmployeeWageComputation()
         {
             companies = new ArrayList<>();
+            TotalEmpWage = new HashMap<>();
         }
 
         public void addCompany(String companyName, int wagePerHour, int workingDays, int workingHours)
         {
             CompanyEmpWage company = new CompanyEmpWage(companyName, wagePerHour, workingDays, workingHours);
             companies.add(company);
+            TotalEmpWage.put(companyName,0);
         }
 
         int generateEmployeeType()
@@ -25,7 +29,7 @@ public class EmployeeWageComputation implements EmpWageBuilder {
             return (int) (Math.random() * 100) % 3;
         }
 
-        int getWorkingHrs(int EmpCheck)
+        int getWorkingHours(int EmpCheck)
         {
             switch (EmpCheck)
             {
@@ -59,21 +63,31 @@ public class EmployeeWageComputation implements EmpWageBuilder {
                     && totalWorkingHrs <= companyEmpWage.WagePerHour; day++, totalWorkingHrs += workingHours)
             {
                 int EmpCheck = generateEmployeeType();
-                workingHours = getWorkingHrs(EmpCheck);
+                workingHours = getWorkingHours(EmpCheck);
                 int wage = workingHours * companyEmpWage.WagePerHour;
                 TotalWage += wage;
                 System.out.printf("%5d       %5d      %5d      %5d\n", day, workingHours, wage, totalWorkingHrs + workingHours);
             }
+            TotalEmpWage.put(companyEmpWage.CompanyName, TotalWage);
             return TotalWage;
+        }
+        void printTotalEmpWage(){
+            System.out.println();
+            System.out.println("The Companies and their total Employee Wages are:");
+            for (String companyName : TotalEmpWage.keySet())
+            {
+                System.out.println(companyName + ": " + TotalEmpWage.get(companyName));
+            }
         }
 
         public static void main(String args[])
         {
-            EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation(3);
+            EmployeeWageComputation employeeWageComputation = new EmployeeWageComputation();
             employeeWageComputation.addCompany("TCS", 20, 17, 8);
             employeeWageComputation.addCompany("INFOSYS", 20, 13, 8);
             employeeWageComputation.addCompany("BTS", 20, 19, 8);
             employeeWageComputation.calculateTotalWage();
+            employeeWageComputation.printTotalEmpWage();
         }
     }
 
