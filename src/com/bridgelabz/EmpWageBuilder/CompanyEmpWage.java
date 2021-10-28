@@ -1,11 +1,11 @@
-package com.bridgelabz;
+package com.bridgelabz.EmpWageBuilder;
 
 import java.util.*;
 
 /**
  * author : jananiVijayakumar
  * date : 24-10-2021
- * employee wage program
+ * employee wage program using interface
 **/
 
 public class CompanyEmpWage {
