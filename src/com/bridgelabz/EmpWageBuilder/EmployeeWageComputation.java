@@ -71,13 +71,8 @@ public class EmployeeWageComputation implements EmpWageBuilder {
             TotalEmpWage.put(companyEmpWage.CompanyName, TotalWage);
             return TotalWage;
         }
-        void printTotalEmpWage(){
-            System.out.println();
-            System.out.println("The Companies and their total Employee Wages are:");
-            for (String companyName : TotalEmpWage.keySet())
-            {
-                System.out.println(companyName + ": " + TotalEmpWage.get(companyName));
-            }
+        public int getTotalEmpWage(String CompanyName){
+            return TotalEmpWage.get(CompanyName);
         }
 
         public static void main(String args[])
@@ -87,7 +82,9 @@ public class EmployeeWageComputation implements EmpWageBuilder {
             employeeWageComputation.addCompany("INFOSYS", 20, 13, 8);
             employeeWageComputation.addCompany("BTS", 20, 19, 8);
             employeeWageComputation.calculateTotalWage();
-            employeeWageComputation.printTotalEmpWage();
+            String query = "TCS";
+            int TotalWage = employeeWageComputation.getTotalEmpWage(query);
+            System.out.println("Total Employee Wage for " + query + " company is " + TotalWage);
         }
     }
 
